@@ -1,28 +1,27 @@
 "general setting
 syntax on
-colorscheme gruvbox
 set number
 set showmatch
+set relativenumber
+let mapleader = "\<space>"
 
+"Plugin
 call plug#begin()								
 
-Plug 'itchyny/lightline.vim'                                  
-Plug 'preservim/nerdtree'                                   
-Plug 'artanikin/vim-synthwave84'                    
+Plug 'vim-airline/vim-airline'
+Plug 'preservim/nerdtree'                               
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'morhetz/gruvbox'
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdcommenter'
 
-call plug#end()
+call plug#end() 
 
+
+colorscheme gruvbox
 
 "key mapping
 imap jk <Esc>
 imap <C-s> <ESC>:w<cr>
 map <F2> :NERDTree<cr>
-map <space> :
-map <C-h> <C-w>h
-map <C-l> <C-w>l
-map <C-k> <C-w>k
-map <C-j> <C-w>j
-
+n
