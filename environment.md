@@ -1,5 +1,142 @@
+# Software
+
+## 编程环境
+
+```
+sudo apt update
+sudo apt install g++ git cmake -y
+curl -sL install-node.vercel.app/lts | bash
+```
+
+
+
+## neovim
+
+1. 安装
+
+   ```
+   sudo apt-get remove vim
+   sudo apt-get install software-properties-common
+   sudo apt-add-repository ppa:neovim-ppa/stable
+   sudo apt-get update
+   sudo apt-get install neovim -y
+   ```
+
+   
+
+2. 配置 init.vim 文件
+
+   ```
+   git clone https://github.com/DMClimbo/Config.git
+   mkdir -p ~/.config/nvim
+   cp init.vim  ~/.config/nvim/init.vim
+   ```
+
+   ​     
+
+3. 安装插件
+
+   ```
+   vim
+   :PlugInstall
+   :CocInstall coc-jed
+   :CocInstall coc-clang
+   ```
+
+   
+
+## Oh-my-zsh
+
+1. 安装
+
+   ```
+   sudo apt install zsh -y
+   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+   ```
+
+   
+
+2. 编辑 ` ~/.zshrc`文件，将第 7 行改为
+
+   ``` 
+   ZSH_THEME="agnoster"
+   ```
+
+   
+
+3. 编辑 ` ~/.oh-my-zsh/themes/agnoster.zsh-theme` 文件，把 92 行修改为：
+
+   ```
+   prompt_segment green black "%(!.%{%F{yellow}%}.)%n"
+   ```
+
+   
+
+
+
+## anaconda
+
+1. 下载安装
+
+   ```
+   wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh
+   sudo chmod +x Anaconda3-2021.05-Linux-x86_64.sh
+   ./Anaconda3-2021.05-Linux-x86_64.sh  
+   ```
+
+2. 配置环境变量
+
+   ```
+   echo 'export PATH="/home/yang/anaconda3/bin:$PATH"' >> ~/.zshrc
+   source ~/.zshrc
+   conda init zsh
+   ```
+
+   
+
+
+
+##  node 
+
+1. 安装
+
+   ``` 
+   curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+   sudo apt install nodejs -y
+   ```
+
+   
+
+
+
+# linux 环境配置
+
+## git 配置
+
+- 基础配置
+
+  ```
+  git config --global user.email "yanghang233@126.com"
+  git config --global user.name "yang"
+  ```
+  
+  
+
+## 快捷命令
+
+​     在 `~/.zshrc` 文件最后添加
+
+```
+alias vimconf='vim ~/.config/nvim/init.vim'
+```
+
+
+
+
+
+
+
 # frp
-nnoremap <leader>n :NERDTree<cr>
 
 ## 基本概念
 
@@ -87,25 +224,6 @@ nohup  cd /home/yang/桌面/frp/ && ./frpc  -c frpc.ini nohup /home/yang/桌面/
 
 
 
-
-
-# vim
-
-# neovim
-
-- 安装
-
-  ```
-  sudo apt-get install software-properties-common
-  sudo apt-add-repository ppa:neovim-ppa/stable
-  sudo apt-get update
-  sudo apt-get install neovim
-  ```
-
-  
-
-
-
 ## vim-plug
 
 1. 下载
@@ -185,20 +303,13 @@ nohup  cd /home/yang/桌面/frp/ && ./frpc  -c frpc.ini nohup /home/yang/桌面/
 
      
 
-# linux配置
-
-## [oh-my-zsh](https://zhuanlan.zhihu.com/p/273237897)
-
-
-
-
-
-
+# 设置快捷指令
 
 - 在`~/.bashrc`文件末尾添加：
 
   ```
-  alias  mod vim = 'vim ~/.config/nvim/init.vim'
+  
+   31 nnoremap <leader>gp :Git push<cr>
   ```
-
+  
   如果用的是其他的 shell  在相应的文件中修改，如`~/.zshrc`
