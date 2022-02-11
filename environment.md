@@ -22,7 +22,7 @@ curl -sL install-node.vercel.app/lts | bash
    sudo apt-get install neovim -y
    ```
 
-   
+   ​    
 
 2. 配置 init.vim 文件
 
@@ -40,9 +40,10 @@ curl -sL install-node.vercel.app/lts | bash
    vim
    :PlugInstall
    :CocInstall coc-jed
-   :CocInstall coc-clang
+   :CocInstall coc-clangd
+   :CocCommand clangd.install 
    ```
-
+   
    
 
 ## Oh-my-zsh
@@ -84,6 +85,8 @@ curl -sL install-node.vercel.app/lts | bash
    ./Anaconda3-2021.05-Linux-x86_64.sh  
    ```
 
+     
+
 2. 配置环境变量
 
    ```
@@ -96,31 +99,42 @@ curl -sL install-node.vercel.app/lts | bash
 
 
 
-##  node 
-
-1. 安装
-
-   ``` 
-   curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-   sudo apt install nodejs -y
-   ```
-
-   
-
-
+​				
 
 # linux 环境配置
 
 ## git 配置
 
-- 基础配置
+1. 基础配置
 
-  ```
-  git config --global user.email "yanghang233@126.com"
-  git config --global user.name "yang"
-  ```
-  
-  
+   ```
+   git config --global user.email "2290470546@qq.com"
+   git config --global user.name "yang"
+   ```
+
+   ​		
+
+2. github 新建仓库，添加 ssh 密钥
+
+   - 在本地创建 SSH Key 
+
+     ```
+     ssh-keygen -t rsa -C "2290470546@qq.com"
+     ```
+
+   - 复制 `~/.ssh/id_rsa.pub` 中的内容到 github settig-> SSH and GPG keys
+
+     ​	
+
+3. 绑定 github 远程仓库
+
+   ```
+   git remote add origin git@github.com:DMClimbo/XXX.git
+   ```
+
+   ​		
+
+   
 
 ## 快捷命令
 
@@ -128,7 +142,11 @@ curl -sL install-node.vercel.app/lts | bash
 
 ```
 alias vimconf='vim ~/.config/nvim/init.vim'
+alias gocloud='ssh yang@124.71.7.130'
+alias tn='tmux new -s'
 ```
+
+
 
 
 
@@ -224,92 +242,5 @@ nohup  cd /home/yang/桌面/frp/ && ./frpc  -c frpc.ini nohup /home/yang/桌面/
 
 
 
-## vim-plug
+ 
 
-1. 下载
-
-   ``` 
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-   ```
-   
-   ​	
-   
-2. 创建一个``` ~/.config/nvim/init.vim ``` 文件，输入以下文本：
-
-   ```
-   call plug#begin()								
-   
-   Plug 'itchyny/lightline.vim'                                 
-   Plug 'preservim/nerdtree'                               
-   Plug 'artanikin/vim-synthwave84'                   
-   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-   
-   
-   call plug#end()
-   ```
-
-   每次需要安装插件时，在 ```call plug#begin()``` 和 ```call plug#end()```  之间添加
-
-    
-
-3. 命令（终端启动 vim 后）：
-
-   ```
-   :PlugInstall       					# 安装 ~/.vimrc 中的插件
-   :PlugUpdate     			 	 # 更新插件（可以添加插件名更新指定插件）
-   :PlugClean         					# 卸载在 call plug#begin 和 call plugin#end之间删除的插件
-   :PlugUpgrade   					# 更新vim-plug
-   :PlugStatus                         # 检查插件安装状态
-   :PlugSnapshot ~/vim-plug.list    # 生成插件快照
-   ```
-
-    
-
-## coc 
-
-1. 安装 node 
-
-   ``` 
-   curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-   sudo apt install  nodejs
-   ```
-
-2. coc 插件
-
-   ``` 
-   :CocInstall  coc-pyright
-   :CocInstall coc-clang
-   ```
-
-3. 安装 Clangd
-
-   - 能连外网用 coc 自带安装命令：
-
-     ````
-     :CocCommand clangd.install
-     ````
-
-   - 脚本安装（可能会找不到 clangd 文件，需要 ln 软链接到 `~/.local/bin/clangd`下：
-
-     ````
-     bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
-     
-     cd ~/.local/bin/clangd
-     
-     touch clangd
-     
-     ln -s [clangd源程序地址] ~/.local/bin/clangd
-     ````
-
-     
-
-# 设置快捷指令
-
-- 在`~/.bashrc`文件末尾添加：
-
-  ```
-  
-   31 nnoremap <leader>gp :Git push<cr>
-  ```
-  
-  如果用的是其他的 shell  在相应的文件中修改，如`~/.zshrc`
