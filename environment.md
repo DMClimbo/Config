@@ -134,7 +134,21 @@ curl -sL install-node.vercel.app/lts | bash
 
    ​		
 
-   
+   ## tmux
+
+
+
+## 远程服务器
+
+- SSH 免密登录
+
+  ```
+  ssh-copy-id user@host
+  ```
+
+  第一次需要输入密码，将生成的公钥对存到远程服务器中
+
+
 
 ## 快捷命令
 
